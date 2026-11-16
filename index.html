@@ -1,71 +1,273 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FIT ME</title>
-  <style>
-    body {
-      margin: 0;
-      background: #faf8ff;
-      font-family: Arial, sans-serif;
-      color: #292433;
-    }
-    header {
-      padding: 30px 20px;
-      background: white;
-      text-align: center;
-    }
-    h1 {
-      color: #9575cd;
-      font-size: 32px;
-      margin: 0;
-    }
-    main {
-      padding: 24px;
-    }
-    .card {
-      background: white;
-      padding: 24px;
-      border-radius: 20px;
-      margin-bottom: 16px;
-      box-shadow: 0 4px 16px #ddd5ed55;
-    }
-    button {
-      background: #a78bfa;
-      color: white;
-      border: none;
-      border-radius: 12px;
-      padding: 14px 20px;
-      font-size: 16px;
-      width: 100%;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FIT ME</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #faf9f7;
+  color: #222;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  background: white;
+  padding: 24px 20px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.logo {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: 4px;
+}
+
+.subtitle {
+  font-size: 12px;
+  color: #888;
+  margin-top: 8px;
+}
+
+.hero {
+  padding: 65px 25px;
+  background: #e9e3df;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 29px;
+  line-height: 1.5;
+}
+
+.hero p {
+  color: #666;
+  font-size: 14px;
+}
+
+button {
+  border: none;
+  background: #222;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+section {
+  padding: 30px 20px;
+}
+
+section h2 {
+  font-size: 21px;
+}
+
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  margin-bottom: 15px;
+  border: 1px solid #eee;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.card p {
+  font-size: 14px;
+  color: #777;
+  line-height: 1.6;
+}
+
+nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  background: white;
+  border-top: 1px solid #eee;
+  justify-content: space-around;
+  padding: 15px 5px;
+}
+
+nav span {
+  font-size: 12px;
+  cursor: pointer;
+}
+
+main {
+  padding-bottom: 80px;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+</style>
 </head>
+
 <body>
-  <header>
-    <h1>FIT ME</h1>
-    <p>나에게 어울리는 스타일을 만나다</p>
-  </header>
 
-  <main>
+<header>
+  <div class="logo">FIT ME</div>
+  <div class="subtitle">FIND YOUR OWN STYLE</div>
+</header>
+
+<main>
+
+<div id="home" class="page active">
+  <div class="hero">
+    <h1>오늘의 스타일,<br>나에게 먼저 입혀보다.</h1>
+    <p>쇼핑하기 전 나에게 어울리는지 확인하세요.</p>
+    <button onclick="showPage('fitting')">
+      AI 피팅 시작하기
+    </button>
+  </div>
+
+  <section>
+    <h2>Discover Your Style</h2>
+
     <div class="card">
-      <h2>AI 가상 피팅</h2>
-      <p>구매하기 전에 나에게 어울리는지 확인하세요.</p>
-      <button>AI로 입어보기</button>
+      <h3>AI 가상 피팅</h3>
+      <p>구매 전 원하는 옷을 내 사진에 입혀보세요.</p>
+      <button onclick="showPage('fitting')">
+        입어보기
+      </button>
     </div>
 
     <div class="card">
-      <h2>AI 퍼스널 컬러</h2>
-      <p>나에게 어울리는 컬러와 스타일을 찾아보세요.</p>
-      <button>스타일 분석하기</button>
+      <h3>퍼스널 컬러</h3>
+      <p>나에게 어울리는 컬러를 찾아보세요.</p>
+      <button onclick="showPage('color')">
+        분석하기
+      </button>
+    </div>
+  </section>
+</div>
+
+<div id="fitting" class="page">
+  <section>
+    <h2>AI 가상 피팅</h2>
+    <p>나에게 어울리는 옷을 미리 확인해 보세요.</p>
+
+    <div class="card">
+      <h3>내 사진 등록</h3>
+      <input type="file" accept="image/*">
     </div>
 
     <div class="card">
-      <h2>쇼핑</h2>
-      <p>다양한 쇼핑몰의 인기 상품을 만나보세요.</p>
-      <button>쇼핑 시작하기</button>
+      <h3>입어볼 옷 선택</h3>
+      <input type="file" accept="image/*">
     </div>
-  </main>
+
+    <button onclick="alert('AI 피팅 기능은 개발 예정입니다.')">
+      AI 피팅하기
+    </button>
+  </section>
+</div>
+
+<div id="photo" class="page">
+  <section>
+    <h2>내 사진</h2>
+    <p>나만의 피팅 사진을 관리하세요.</p>
+
+    <div class="card">
+      <h3>사진 업로드</h3>
+      <input type="file" accept="image/*">
+    </div>
+
+    <div class="card">
+      <h3>얼굴 보정</h3>
+      <p>자연스러운 피부와 얼굴 보정 기능</p>
+      <button onclick="alert('얼굴 보정 기능은 개발 예정입니다.')">
+        보정 시작하기
+      </button>
+    </div>
+  </section>
+</div>
+
+<div id="color" class="page">
+  <section>
+    <h2>퍼스널 컬러</h2>
+    <p>나에게 어울리는 색상을 찾아보세요.</p>
+
+    <div class="card">
+      <h3>퍼스널 컬러 분석</h3>
+      <p>사진을 이용한 컬러 분석 기능</p>
+      <button onclick="alert('퍼스널 컬러 분석 기능은 개발 예정입니다.')">
+        분석 시작하기
+      </button>
+    </div>
+  </section>
+</div>
+
+<div id="shop" class="page">
+  <section>
+    <h2>FIT ME SHOP</h2>
+    <p>나에게 어울리는 스타일을 쇼핑하세요.</p>
+
+    <div class="card">
+      <h3>입점 쇼핑몰</h3>
+      <p>다양한 패션 브랜드를 만나보세요.</p>
+    </div>
+
+    <div class="card">
+      <h3>추천 상품</h3>
+      <p>AI 피팅과 연결되는 패션 상품</p>
+    </div>
+  </section>
+</div>
+
+<div id="mypage" class="page">
+  <section>
+    <h2>MY FIT ME</h2>
+
+    <div class="card">
+      <h3>찜한 상품</h3>
+      <p>관심 있는 상품을 모아보세요.</p>
+    </div>
+
+    <div class="card">
+      <h3>피팅 기록</h3>
+      <p>이전에 입어본 스타일을 확인하세요.</p>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<nav>
+  <span onclick="showPage('home')">홈</span>
+  <span onclick="showPage('fitting')">AI 피팅</span>
+  <span onclick="showPage('photo')">내 사진</span>
+  <span onclick="showPage('color')">컬러</span>
+  <span onclick="showPage('shop')">쇼핑</span>
+  <span onclick="showPage('mypage')">MY</span>
+</nav>
+
+<script>
+function showPage(pageId) {
+  document.querySelectorAll('.page').forEach(function(page) {
+    page.classList.remove('active');
+  });
+
+  document.getElementById(pageId).classList.add('active');
+  window.scrollTo(0, 0);
+}
+</script>
+
 </body>
 </html>
